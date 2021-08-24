@@ -4,7 +4,7 @@
   --tabButton: 100%;
   --buttonFloat: none;
   --buttonWidth: 100%;
-  --paddingSize: 50px 0px 25px 0px;
+  --paddingSize: 10px 0px 10px 0px;
   /*For main-content and sidebar */
   --main-content-width:70%;
   --sidebar-width: 22.5%;
@@ -22,7 +22,7 @@ body {
     font-size:12px;
     --tabSide: 20%;
     --tabContent: 80%;
-    --paddingSize: 50px 0px 25px 0px;
+    --paddingSize: 10px 0px 10px 0px;
   }
 }
 
@@ -33,7 +33,7 @@ body {
     --tabContent: 100%;
     --buttonFloat: left;
     --buttonWidth: ;
-    --paddingSize: 60px 0px 25px 0px;
+    --paddingSize: 10px 0px 10px 0px;
     --main-content-width:95%;
     --sidebar-width: 95%;
     --sidebar-left-margin: 2.5%;
@@ -62,7 +62,7 @@ body {
 
 @media screen and (max-width: 305px) {
   body {
-    --paddingSize: 80px 0px 50px 0px;
+    --paddingSize: 10px 0px 10px 0px;
   }
 }
 
@@ -534,7 +534,7 @@ li.nav a:hover:not(.active) {
 }
 
 
-.centerInput{	  
+.centerInput{
 	border:none;
 	display: inline;
 	margin-left: auto;
@@ -556,7 +556,7 @@ li.nav a:hover:not(.active) {
 	font-family: 'Indie Flower', cursive;
 }
 
-.itemInput{	  
+.itemInput{
 	border:none;
 	display: block;
 	margin-left: auto;
@@ -580,5 +580,6 @@ li.nav a:hover:not(.active) {
 
 #output{
 	text-align: justify;
-	
+  font-size: 2em;
+
 }
