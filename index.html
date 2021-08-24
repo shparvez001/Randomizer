@@ -63,13 +63,18 @@
 
   function storeItems()
   {
-    items=[];
+    items="";
     console.log("asdsda");
     var itemsTemp =document.getElementsByName("items");
     for(var i=0;i<itemsTemp.length;i++)
     {
-      items.push(itemsTemp[i].value);
+      //items.push(itemsTemp[i].value);
       //console.log(itemsTemp[i].value);
+      if(i!=0)
+      {
+        items+=',';
+      }
+      items+=itemsTemp[i].value;
     }
     localStorage.setItem("items", items);
     //console.log(items);
@@ -78,13 +83,16 @@
   function putItems()
   {
     var itemsHtml='';
-    tempItems=items.split(",");
-    for(var i=0;i<tempItems.length;i++)
+    if(items)
     {
-      itemsHtml+='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()" value="'+tempItems[i]+'">';
-    }
+      tempItems=items.split(",");
+      for(var i=0;i<tempItems.length;i++)
+      {
+        itemsHtml+='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()" value="'+tempItems[i]+'">';
+      }
       itemsHtml+='<span id="blank"></span><button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>';
       document.getElementById("list-of-items").innerHTML=itemsHtml;
+    }
   }
 
   function addRow()
@@ -124,36 +132,39 @@
   {
     //console.log(items);
     //console.log(groupSize);
-    tempItemList=items.split(",").sort(random_sort);
-    tempItemList2=items.split(",").sort(random_sort);
-    console.log(tempItemList);
-    if(!allowDuplicate)
+    if(items)
     {
-      console.log("Printing....");
-      outputHtml='<ol>';
-      var increment=Number(groupSize);
-      for (var i = 0; i < tempItemList2.length; i+=increment) {
-        var tempText="";
-        for (var j = 0; j < groupSize; j++) {
-          var tempIt=tempItemList.pop()
-          if(tempIt)
-          {
-            if (j!=0) {
-              tempText+='     --&--      ';
+      tempItemList=items.split(",").sort(random_sort);
+      tempItemList2=items.split(",").sort(random_sort);
+      console.log(tempItemList);
+      if(!allowDuplicate)
+      {
+        console.log("Printing....");
+        outputHtml='<ol>';
+        var increment=Number(groupSize);
+        for (var i = 0; i < tempItemList2.length; i+=increment) {
+          var tempText="";
+          for (var j = 0; j < groupSize; j++) {
+            var tempIt=tempItemList.pop()
+            if(tempIt)
+            {
+              if (j!=0) {
+                tempText+='     --&--      ';
+              }
+              tempText+=tempIt;
             }
-            tempText+=tempIt;
+
           }
-
+          outputHtml+='<li>'+tempText+'</li>';
+            console.log("aaaa");
+            console.log(i);
+            console.log(items.split(",").length);
         }
-        outputHtml+='<li>'+tempText+'</li>';
-          console.log("aaaa");
-          console.log(i);
-          console.log(items.split(",").length);
+
+
+        outputHtml+='</ol>';
+        document.getElementById("output").innerHTML=outputHtml;
       }
-
-
-      outputHtml+='</ol>';
-      document.getElementById("output").innerHTML=outputHtml;
     }
   }
 
