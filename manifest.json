@@ -1,0 +1,44 @@
+{
+  "name": "Randomizer",
+  "short_name": "Randomizer",
+  "icons": [{
+    "src": "images/cseicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "images/cse-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "lang": "en-US",
+  "scope": "/",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "orientation": "landscape"
+}

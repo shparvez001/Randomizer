@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Randomizer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/cse-icon-152.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="NEUB CSE">
+  <meta name="msapplication-TileImage" content="images/cse-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+</head>
+<body class="fullscreen">
+  <ul class="nav" id="top-nav"> </ul>
+  <div class="containerr">
+    <div class="information-full" style="background-color: tan !important;">
+    <h1 style="font-size:3.5vw;">Randomizer</h1>
+    </div>
+    <div class="main-content-full">
+    <div class="information">
+	<div class="box-half">
+    <h1 style="color: green;">Group Size  <input type="text" class="centerInput" id="groupSize" placeholder="Group Size" maxlength="1"  onkeyup="storeGroupSize()"></h1>
+    <h1 style="color: blue;">List of Items</h1>
+    <div id="list-of-items">
+      <input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()">
+      <span id="blank"></span>
+      <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>
+    </div>
+    <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: right;" onclick="clearList()">Clear</button>
+    </div>
+	<div class="box-half">
+    <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: left;" onclick="generate()">Generate</button>
+    <h1>Randomly Grouped Items</h1>
+    <span id="output" ></span>
+	</div>
+
+	</div>
+  <p><b><i>Use CTRL + Space to add new row.</i></b></p>
+  </div>
+  </div>
+  <!--<script src="js/main.js"></script>-->
+  <script>
+  var allowDuplicate=false;
+  var groupSize=localStorage.getItem("groupSize");
+  document.getElementById("groupSize").value=groupSize;
+  //var items=[];
+  var items=localStorage.getItem("items");
+  putItems();
+
+  function storeGroupSize()
+  {
+    //console.log("TEst");
+    groupSize=document.getElementById("groupSize").value;
+    localStorage.setItem("groupSize", groupSize);
+    document.getElementById("groupSize").value=groupSize;
+    //console.log(groupSize);
+  }
+
+  function storeItems()
+  {
+    items=[];
+    console.log("asdsda");
+    var itemsTemp =document.getElementsByName("items");
+    for(var i=0;i<itemsTemp.length;i++)
+    {
+      items.push(itemsTemp[i].value);
+      //console.log(itemsTemp[i].value);
+    }
+    localStorage.setItem("items", items);
+    //console.log(items);
+  }
+
+  function putItems()
+  {
+    var itemsHtml='';
+    tempItems=items.split(",");
+    for(var i=0;i<tempItems.length;i++)
+    {
+      itemsHtml+='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()" value="'+tempItems[i]+'">';
+    }
+      itemsHtml+='<span id="blank"></span><button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>';
+      document.getElementById("list-of-items").innerHTML=itemsHtml;
+  }
+
+  function addRow()
+  {
+    var allItems =document.getElementsByName("items");
+    var itemSize=allItems.length;
+    document.getElementById("blank").outerHTML='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()"><span id="blank"></span>';
+  }
+
+  function clearList()
+  {
+      document.getElementById("list-of-items").innerHTML='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()"><span id="blank"></span><button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>';
+  }
+
+  //Down Key detection
+  document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    console.log(evt.keyCode);
+    if (evt.ctrlKey && evt.keyCode == 90) { //Checking for undo
+        alert("Ctrl-Z");
+    }
+    if (evt.ctrlKey && evt.keyCode == 32) { //Checking for Control + Space
+      addRow();
+    }
+    if (evt.keyCode == 27) {//Escape Pressed
+        //alert("Escape ");
+    }
+	if (evt.keyCode == 34 ||evt.keyCode == 39 ||evt.keyCode == 40 ) {//pagedown or Right or down key
+		//addRow();
+    }
+	if (evt.keyCode == 33 ||evt.keyCode == 37 ||evt.keyCode == 38 ) {//pageup or Left or up key
+		//
+    }
+};
+
+  function generate()
+  {
+    //console.log(items);
+    //console.log(groupSize);
+    tempItemList=items.split(",").sort(random_sort);
+    tempItemList2=items.split(",").sort(random_sort);
+    console.log(tempItemList);
+    if(!allowDuplicate)
+    {
+      console.log("Printing....");
+      outputHtml='<ol>';
+      var increment=Number(groupSize);
+      for (var i = 0; i < tempItemList2.length; i+=increment) {
+        var tempText="";
+        for (var j = 0; j < groupSize; j++) {
+          var tempIt=tempItemList.pop()
+          if(tempIt)
+          {
+            if (j!=0) {
+              tempText+='     --&--      ';
+            }
+            tempText+=tempIt;
+          }
+
+        }
+        outputHtml+='<li>'+tempText+'</li>';
+          console.log("aaaa");
+          console.log(i);
+          console.log(items.split(",").length);
+      }
+
+
+      outputHtml+='</ol>';
+      document.getElementById("output").innerHTML=outputHtml;
+    }
+  }
+
+  function random_sort(a, b) {
+   return Math.random() - 0.5;
+  }
+
+
+  </script>
+</body>
+</html>

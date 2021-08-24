@@ -1,0 +1,584 @@
+:root {
+  --tabSide: 20%;
+  --tabContent: 80%;
+  --tabButton: 100%;
+  --buttonFloat: none;
+  --buttonWidth: 100%;
+  --paddingSize: 50px 0px 25px 0px;
+  /*For main-content and sidebar */
+  --main-content-width:70%;
+  --sidebar-width: 22.5%;
+  --sidebar-left-margin: 0%;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    font-size:12px;
+    --tabSide: 20%;
+    --tabContent: 80%;
+    --paddingSize: 50px 0px 25px 0px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  body {
+    font-size:9px;
+    --tabSide: 100%;
+    --tabContent: 100%;
+    --buttonFloat: left;
+    --buttonWidth: ;
+    --paddingSize: 60px 0px 25px 0px;
+    --main-content-width:95%;
+    --sidebar-width: 95%;
+    --sidebar-left-margin: 2.5%;
+  }
+}
+
+/*
+@media screen and (max-width: 530px) {
+  body {
+    --paddingSize: 90px 0px 5px 0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    --paddingSize: 110px 0px 5px 0px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    --paddingSize: 140px 0px 5px 0px;
+  }
+}
+*/
+
+@media screen and (max-width: 305px) {
+  body {
+    --paddingSize: 80px 0px 50px 0px;
+  }
+}
+
+/* Make content area fill the entire browser window */
+html,
+.fullscreen {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /*background-image: url(https://shparvez001.sirv.com/Images/neub/cse/bg.jpg?brightness=47);*/
+  background-color: #f3f3f3;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-attachment: fixed;
+  opacity: 100%;
+}
+
+/* Center the content in the browser window */
+.containerr {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding: var(--paddingSize);
+}
+
+
+
+.title {
+  font-size: 3rem;
+}
+
+/* Navbar */
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #551a8b;
+  position: fixed;
+  top: 1px;
+  z-index: 998;
+  border-radius: 5px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+li.nav {
+  float: left;
+}
+
+li.nav.non-link{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.nav a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: inherit;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+
+.nav a:hover, .dropdown:hover .dropbtn {
+  background-color: #111;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: #551a8b;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 99;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #111;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/*  Tab    */
+
+* {box-sizing: border-box}
+
+.container-separator{
+  background-color: inherit;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.main-content-full{
+  opacity: 0.99;
+  height: 100%;
+  min-height: 50px;
+  width: 95%;
+  overflow-x: auto;
+  overflow-y: auto;
+  /*padding: 5px;*/
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  z-index: 0;
+}
+
+/* main-content and sidebar classes are without any proper styling. Mainly intended for making 2 columns */
+.main-content{
+  float: left;
+  opacity: 0.99;
+  height: 100%;
+  min-height: 50px;
+  width: var(--main-content-width);
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  z-index: 0;
+}
+
+.sidebar{
+  float: left;
+  opacity: 0.99;
+  height: 100%;
+  min-height: 50px;
+  width: var(--sidebar-width);
+  overflow-x: auto;
+  overflow-y: auto;
+  margin-left: var(--sidebar-left-margin);
+  margin-right: 2.5%;
+  z-index: 0;
+}
+
+
+.information{
+  background-color: lightblue;
+  opacity: 0.99;
+  height: 100%;
+  min-height: 50px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 7;
+}
+
+.information-sidebar{
+  background-color: lightblue;
+  opacity: 0.99;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 7;
+}
+
+.information-full{
+  background-color: lightblue;
+  opacity: 0.99;
+  height: 100%;
+  min-height: 50px;
+  width: 95%;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 7;
+}
+
+.box-full{
+  background-color: lightgreen;
+  opacity: 0.99;
+  width: 100%;
+  height: 100%;
+  min-height: 50px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 8;
+}
+
+.box-half{
+  background-color: lightgreen;
+  opacity: 0.99;
+  width: 45%;
+  height: 100%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  min-height: 50px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 8;
+  float: left;
+}
+
+.gallery{
+  float: left;
+  background-color: lightgreen;
+  opacity: 0.99;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 4;
+}
+
+
+/* intended for 2 column gallery */
+.gallery-half{
+  float: left;
+  background-color: lightgreen;
+  opacity: 0.99;
+  width: 45%;
+  height: 100%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  min-height: 100px;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 0px solid purple;
+  border-radius: 5px;
+  z-index: 4;
+}
+
+/* Hover effect */
+.gallery:hover{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
+}
+.links:hover{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
+}
+.information:hover{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
+}
+
+
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  float: left;
+  border: 0px solid #551a8b;
+  background-color: #551a8b;
+  opacity: 0.99;
+  width: var(--tabSide);
+  border-radius: 5px;
+  text-align: center;
+  /*height: 300px;*/
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  float: var(--buttonFloat);
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 14px 16px;
+  width: var(--buttonWidth);
+  border: none;
+  border-radius: 1px;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.6s;
+  font-size:1.5em;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #111;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #04aa6d;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 2px 16px;
+  border: 0px solid #ccc;
+  width: var(--tabContent);
+  border-left: none;
+  font-size:1.5em;
+  text-align: justify;
+  /*height: 300px;
+  text-indent: 50px;*/
+  line-height: 1.3;
+}
+
+.tabcontent :not(h1 h2){
+  padding: 5px 10px;
+
+}
+.tabcontent h1 {
+  font-size:2.5em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.tabcontent h2 {
+  font-size:2em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+
+/* Column Layout   */
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 1px;
+  background-color: violet;
+  color: white;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/* Custom Scrollbar    */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #551a8b;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+
+
+/*Loader for auto Next */
+#loader {
+  position: absolute;
+  left: 11%;
+  top: 15%;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin: 5px 0 0 0px;
+  border: 5px solid #00ffdc;
+  border-radius: 50%;
+  border-top: 5px solid #551a8b;
+  -webkit-animation: spin 4s linear infinite;
+  animation: spin 4s linear 1;
+  z-index: 999;
+}
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.centerInput{	  
+	border:none;
+	display: inline;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	color: green;
+	background-color: lightgreen;
+	height: 100%;
+	width: 100%;
+	max-height: 50px;
+	max-width: 150px;
+	border-top-style: hidden;
+    border-right-style: hidden;
+    border-bottom-style: solid;
+    border-left-style: hidden;
+	border-width: 5px;
+	text-align: center;
+	font-size: 16pt;
+	font-family: 'Indie Flower', cursive;
+}
+
+.itemInput{	  
+	border:none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	color: blue;
+	background-color: lightgreen;
+	height: 100%;
+	width: 100%;
+	max-height: 50px;
+	max-width: 600px;
+	border-top-style: hidden;
+    border-right-style: hidden;
+    border-bottom-style: solid;
+    border-left-style: hidden;
+	border-width: 5px;
+	text-align: center;
+	font-size: 16pt;
+	font-family: 'Indie Flower', cursive;
+}
+
+#output{
+	text-align: justify;
+	
+}
