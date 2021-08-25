@@ -329,6 +329,12 @@ li.nav a:hover:not(.active) {
   float: left;
 }
 
+@media screen and (max-width: 550px) {
+  .box-half {
+    width: 95%;
+  }
+}
+
 .gallery{
   float: left;
   background-color: lightgreen;
@@ -580,6 +586,23 @@ li.nav a:hover:not(.active) {
 
 #output{
 	text-align: justify;
-  font-size: 2em;
+  font-size: 1.5em;
+  padding: auto;
 
+}
+
+#text-paste-container{
+  	border:none;
+  	display: none;
+}
+textarea{
+  border: none;
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+textarea::-webkit-scrollbar {
+  width: 10px;
 }

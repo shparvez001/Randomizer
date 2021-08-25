@@ -33,6 +33,13 @@
       <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>
     </div>
     <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: right;" onclick="clearList()">Clear</button>
+    <div >
+      <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: left;" onclick="showTextBox()">Paste as Plain Text</button>
+      <div id="text-paste-container" >
+        <textarea  rows="10"  name="text-to-copy" type="text" id="text-to-copy" placeholder="Paste your list here" ></textarea>
+        <button type="button" name="button" style="background-color: blue; color: white; padding: 5px; border-radius: 5px; float: right;" onclick="loadText()">Load</button>
+      </div>
+    </div>
     </div>
 	<div class="box-half">
     <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: left;" onclick="generate()">Generate</button>
@@ -106,6 +113,7 @@
   function clearList()
   {
       document.getElementById("list-of-items").innerHTML='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()"><span id="blank"></span><button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>';
+      document.getElementById("text-to-copy").value="";
   }
 
   //Down Key detection
@@ -173,6 +181,26 @@
    return Math.random() - 0.5;
   }
 
+  function showTextBox()
+  {
+    document.getElementById("text-paste-container").style.display="block";
+  }
+  function loadText()
+  {
+    var textToCopy=document.getElementById("text-to-copy").value.split("\n");
+    //window.aa=textToCopy;
+    console.log(textToCopy);
+    items="";
+    for (var i = 0; i < textToCopy.length; i++) {
+      if (i!=0) {
+        items+=",";
+      }
+      items+=textToCopy[i];
+    }
+    //items=textToCopy;
+    localStorage.setItem("items", items);
+    putItems();
+  }
 
   </script>
 </body>
