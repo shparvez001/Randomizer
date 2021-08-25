@@ -66,6 +66,7 @@
   <!--<script src="js/main.js"></script>-->
   <script>
   var allowDuplicate=false;
+  var itemSeparator=",?,?,";
   var groupSize=localStorage.getItem("groupSize");
   document.getElementById("groupSize").value=groupSize;
   //var items=[];
@@ -92,7 +93,7 @@
       //console.log(itemsTemp[i].value);
       if(i!=0)
       {
-        items+=',';
+        items+=itemSeparator;
       }
       items+=itemsTemp[i].value;
     }
@@ -105,7 +106,7 @@
     var itemsHtml='';
     if(items)
     {
-      tempItems=items.split(",");
+      tempItems=items.split(itemSeparator);
       for(var i=0;i<tempItems.length;i++)
       {
         itemsHtml+='<input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()" value="'+tempItems[i]+'">';
@@ -155,8 +156,8 @@
     //console.log(groupSize);
     if(items)
     {
-      tempItemList=items.split(",").sort(random_sort);
-      tempItemList2=items.split(",").sort(random_sort);
+      tempItemList=items.split(itemSeparator).sort(random_sort);
+      tempItemList2=items.split(itemSeparator).sort(random_sort);
       console.log(tempItemList);
       if(!allowDuplicate)
       {
@@ -179,7 +180,7 @@
           outputHtml+='<li>'+tempText+'</li>';
             console.log("aaaa");
             console.log(i);
-            console.log(items.split(",").length);
+            console.log(items.split(itemSeparator).length);
         }
 
 
@@ -205,7 +206,7 @@
     items="";
     for (var i = 0; i < textToCopy.length; i++) {
       if (i!=0) {
-        items+=",";
+        items+=itemSeparator;
       }
       items+=textToCopy[i];
     }
