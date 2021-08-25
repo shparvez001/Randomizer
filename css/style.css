@@ -606,3 +606,39 @@ textarea{
 textarea::-webkit-scrollbar {
   width: 10px;
 }
+
+#paste-container{
+  display: block;
+  width: 100%;
+}
+
+.dropbox{
+  float: center;
+  display: block;
+  width: 300px;
+  height: 300px;
+  background-color: lightblue;
+  text-align: center;
+  line-height: 300px;
+  margin: auto;
+  padding: auto;
+}
+#drop_file_zone {
+    background-color: #EEE;
+    border: #999 5px dashed;
+    width: 290px;
+    height: 200px;
+    padding: 8px;
+    font-size: 18px;
+    margin: auto;
+}
+#drag_upload_file {
+  width:50%;
+  margin:0 auto;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+  display: none;
+}

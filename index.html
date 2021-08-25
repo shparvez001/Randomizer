@@ -33,12 +33,24 @@
       <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px;" onclick="addRow()">Add</button>
     </div>
     <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: right;" onclick="clearList()">Clear</button>
-    <div >
+    <div id"paste-container">
       <button type="button" name="button" style="background-color: tan; padding: 5px; border-radius: 5px; float: left;" onclick="showTextBox()">Paste as Plain Text</button>
       <div id="text-paste-container" >
         <textarea  rows="10"  name="text-to-copy" type="text" id="text-to-copy" placeholder="Paste your list here" ></textarea>
         <button type="button" name="button" style="background-color: blue; color: white; padding: 5px; border-radius: 5px; float: right;" onclick="loadText()">Load</button>
       </div>
+    </div>
+    <br><br>
+    <!-- <div class="dropbox" id="uploadText" ondrop="upload_file(event)" ondragover="return false">
+    Drop Text file to uplaod.-->
+    <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+      <div id="drag_upload_file">
+        <p>Drop file here</p>
+        <p>or</p>
+        <p><input type="button" value="Select File" onclick="file_explorer();" /></p>
+        <input type="file" id="selectfile" />
+      </div>
+      <span id="errorMessage" style="color: red;"></span>
     </div>
     </div>
 	<div class="box-half">
@@ -200,6 +212,68 @@
     //items=textToCopy;
     localStorage.setItem("items", items);
     putItems();
+  }
+  function uploadText()
+  {
+    console.log("fileFound");
+  }
+
+    var fileobj;
+  function upload_file(e) {
+      e.preventDefault();
+      fileobj = e.dataTransfer.files[0];
+      ajax_file_upload(fileobj);
+  }
+
+  function file_explorer() {
+      document.getElementById('selectfile').click();
+      document.getElementById('selectfile').onchange = function() {
+          fileobj = document.getElementById('selectfile').files[0];
+          ajax_file_upload(fileobj);
+      };
+  }
+
+  function ajax_file_upload(file_obj) {
+
+    document.getElementById("errorMessage").innerHTML="";
+      if(file_obj != undefined) {
+        console.log(file_obj);
+        var fileExtension=file_obj.name.split(".").pop();
+        if (fileExtension=='txt'||fileExtension=='csv') {
+          let reader = new FileReader();
+          reader.readAsText(file_obj);
+          reader.onload = function() {
+          console.log(reader.result);
+            showTextBox();
+            document.getElementById("text-to-copy").value=reader.result;
+          };
+          reader.onerror = function() {
+          console.log(reader.error);
+          };
+        }
+        else {
+          console.log("File not a text file");
+          document.getElementById("errorMessage").innerHTML="File not a text file";
+        }
+
+
+        /*
+          var form_data = new FormData();
+          form_data.append('file', file_obj);
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("POST", "ajax.php", true);
+          xhttp.onload = function(event) {
+              oOutput = document.querySelector('.img-content');
+              if (xhttp.status == 200) {
+                  oOutput.innerHTML = "<img src='"+ this.responseText +"' alt='The Image' />";
+              } else {
+                  oOutput.innerHTML = "Error " + xhttp.status + " occurred when trying to upload your file.";
+              }
+          }
+
+          xhttp.send(form_data);
+          */
+      }
   }
 
   </script>
