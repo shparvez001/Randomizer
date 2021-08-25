@@ -40,26 +40,6 @@ body {
   }
 }
 
-/*
-@media screen and (max-width: 530px) {
-  body {
-    --paddingSize: 90px 0px 5px 0px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  body {
-    --paddingSize: 110px 0px 5px 0px;
-  }
-}
-
-@media screen and (max-width: 300px) {
-  body {
-    --paddingSize: 140px 0px 5px 0px;
-  }
-}
-*/
-
 @media screen and (max-width: 305px) {
   body {
     --paddingSize: 10px 0px 10px 0px;

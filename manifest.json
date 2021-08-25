@@ -35,10 +35,9 @@
       "type": "image/png"
     }],
   "lang": "en-US",
-  "scope": "/",
+  "scope": "./",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "white",
-  "theme_color": "white",
-  "orientation": "landscape"
+  "theme_color": "white"
 }
