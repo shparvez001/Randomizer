@@ -16,10 +16,22 @@ self.addEventListener('install', function(e) {
 });
 
 /* Serve cached content when offline */
+/*Offline First approach*/
+/*
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response) {
       return response || fetch(e.request);
+    })
+  );
+});
+*/
+
+/*Online First approach*/
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
     })
   );
 });
