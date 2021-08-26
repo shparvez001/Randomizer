@@ -25,7 +25,7 @@
     <div class="main-content-full">
     <div class="information">
 	<div class="box-half">
-    <h1 style="color: green;">Group Size  <input type="text" class="centerInput" id="groupSize" placeholder="Group Size" maxlength="1"  onkeyup="storeGroupSize()"></h1>
+    <h1 style="color: green;">Group Size  <input type="text" class="centerInput" id="groupSize" placeholder="Group Size" maxlength="1"  value="1" onkeyup="storeGroupSize()"></h1>
     <h1 style="color: blue;">List of Items</h1>
     <div id="list-of-items">
       <input type="text" class="itemInput" name="items" placeholder="Item Name"  onkeyup="storeItems()">
@@ -68,10 +68,10 @@
   var allowDuplicate=false;
   var itemSeparator=",?,?,";
   var groupSize=localStorage.getItem("groupSize");
-  document.getElementById("groupSize").value=groupSize;
   //var items=[];
   var items=localStorage.getItem("items");
-  putItems();
+  //document.getElementById("groupSize").value=groupSize;
+  //putItems();
 
   function storeGroupSize()
   {

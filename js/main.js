@@ -8,4 +8,6 @@ window.onload = () => {
 
   //Adding footer
   document.body.innerHTML+='<div class="footer" id="footer-box">© 2021 SHP</div>'
+  document.getElementById("groupSize").value=groupSize;
+  putItems();
 }

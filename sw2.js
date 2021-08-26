@@ -1,4 +1,4 @@
-var cacheName = 'neub-cse';
+var cacheName = 'randomizer';
 var filesToCache = [
   './',
   './index.html',
